@@ -19,7 +19,7 @@ public final class NetworkProperties {
     private static final Integer maxUsers;
 
     @Getter
-    private static final Integer timeout;
+    private static final String host;
 
 
     static {
@@ -28,7 +28,7 @@ public final class NetworkProperties {
             properties.load(inputStream);
             port = Integer.parseInt(getRequiredProperty(properties, "network.port"));
             maxUsers = Integer.parseInt(getRequiredProperty(properties, "network.max_users"));
-            timeout = Integer.parseInt(getRequiredProperty(properties, "network.timeout"));
+            host = getRequiredProperty(properties, "network.host");
         } catch (IOException e) {
             throw new RuntimeException("Ошибка загрузки конфига", e);
         }

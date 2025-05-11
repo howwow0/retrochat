@@ -17,10 +17,6 @@ public final class CoreConfig {
     private static final String name;
     @Getter
     private static final String motdText;
-    @Getter
-    private static final String broadcastPassword;
-    @Getter
-    private static final int maxLengthMessage;
 
     static {
         Properties properties = new Properties();
@@ -29,8 +25,6 @@ public final class CoreConfig {
 
             properties.load(inputStream);
             name = getRequiredProperty(properties, "core.name");
-            broadcastPassword = getRequiredProperty(properties, "core.broadcast_password");
-            maxLengthMessage = Integer.parseInt(getRequiredProperty(properties, "core.max_length_message"));
             motdText = motdFile != null ?
                     new BufferedReader(new InputStreamReader(motdFile, StandardCharsets.UTF_8))
                             .lines().collect(Collectors.joining("\n")) :
